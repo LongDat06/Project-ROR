@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project | SCS</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><%= image_tag  "f8001e55b20d74d39e53558cdb8b159f.jpg", height:100 %> </a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li>Home</li>
+                        <li>About us</li>s
+                        <li>New & Event's</li>
+                        <li>Solution</li>
+                        <li>O3</li>
+                        <li>Contact</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------ Project -------------- -->
+    
+    <div class="project">
+        <div class="row">
+
+           <div class="col-1"> 
+                <div id="cart" >
+                    <table style="width:120%; "  > 
+                        <tr>
+                            <th colspan="6" >Container type</th> 
+                            <th>
+                                <select name="container_type" id="container_type">
+                                    <option value="FR20">FR20</option>
+                                    <option value="FR40">FR40</option>
+                                    <option value="OT20">OT20</option>
+                                    <option value="OT40">OT40</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Packing style</th>
+                            <th>Lenght </th>
+                            <th>Height</th>
+                            <th>Width</th>
+                            <th>Weight</th>
+                            <th>Cog Height type</th>
+                            <th>Cog Height</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="packing_style" id="packing_style">
+                                    <option value="BARE">Bare</option>
+                                    <option value="SKID">SKID</option>
+                                    <option value="CASE">CASE</option>
+                                    <option value="CRATE">Audi</option>
+                                </select>
+                            </td>
+                            <td><input value="0" id="lenght" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" id="height" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" id="width" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" id="weight" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td>
+                                <select name="cog_height_type" id="cog_type">
+                                    <option value="MANUAL">MANUAL</option>
+                                    <option value="TBA">TBA</option>
+                                    <option value="HALF HEIGHT">HALF HEIGHT</option>
+                                </select>
+                            </td>
+                            <td><input value="0" id="cog_heigth" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+
+                        
+                        </tr>
+                        
+                    </table>
+                    <input style="margin-left: 570px;" id="submit" type="Submit" name="Submit" value="Add item"  onclick="Purchase()" > 
+                </div>
+            </div>  
+
+     <div class="col-1"> 
+                <div id="list_item" >
+                    <h3 style= "text-align: center;" >List item</h3>
+                    <table style="width:120%; "  > 
+                        <tr>
+                            <th colspan="6" >Container type</th> 
+                            <th>
+                               FR20
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Packing style</th>
+                            <th>Lenght </th>
+                            <th>Height</th>
+                            <th>Width</th>
+                            <th>Weight</th>
+                            <th>Cog Height type</th>
+                            <th>Cog Height</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>  
+        </div>
+
+    </div>     
+
+    <!-- ------------footer----------- -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>71 Ayer Rajah Crescent, Singapore </h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15664.031587358322!2d106.73526995!3d11.038034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1a4fd6a29643%3A0x9fcb7b4d484cb3b7!2s71%20Ayer%20Rajah%20Crescent%2C%2001%2003%2C%20Singapore%20139951!5e0!3m2!1svi!2s!4v1640786095700!5m2!1svi!2s" width="250" height="75" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+        
+
+                <div class="footer-col-2">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a>• Career </a>   </li>
+                        <li><a>• FAQs </a></a></li> 
+                        <li><a>• Company policie</a></li>
+                        <li><a>• Info Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col-2">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a>• Hotline: (+65) 6352 1371 </a>  </li>
+                        <li><a>• info@scs71.com</a></li>
+                        
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function Purchase(){
+            
+            alert("Thank you for purchasing!");
+
+        }
+
+       
+    </script>
+    
+</body>
+
+</html>
