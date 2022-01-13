@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Project | SCS</title>
+    <title>item | SCS</title>
 </head>
 
 <body>
@@ -27,61 +27,69 @@
         </div>
     </div>
 
-    <!-- ------------ Project -------------- -->
+    <!-- ------------ project -------------- -->
     
     <div class="project">
         <div class="row">
 
            <div class="col-1"> 
                 <div id="cart" >
+                    <form action= "/project">
                     <table style="width:120%; "  > 
                         <tr>
                             <th colspan="6" >Container type</th> 
                             <th>
-                                <select name="container_type" id="container_type">
-                                    <option value="FR20">FR20</option>
-                                    <option value="FR40">FR40</option>
-                                    <option value="OT20">OT20</option>
-                                    <option value="OT40">OT40</option>
-                                </select>
+
+                                <% if @session_container == nil %>
+                                    <select name="container_type" id="container_type"> 
+                                        <option value="FR20">FR20</option> 
+                                        <option value="FR40">FR40</option> 
+                                        <option value="OT20">OT20</option> 
+                                        <option value="OT40">OT40</option> 
+                                    </select>
+                                <% else %>
+                                    <p> <%= @session_container %> </p>  
+                                <% end %>
+                                
                             </th>
                         </tr>
                         <tr>
                             <th>Packing style</th>
-                            <th>Lenght </th>
-                            <th>Height</th>
+                            <th>Length </th>
+                            <th>Heigth</th>
                             <th>Width</th>
-                            <th>Weight</th>
+                            <th>Weigth</th>
                             <th>Cog Height type</th>
                             <th>Cog Height</th>
                         </tr>
                         <tr>
                             <td>
-                                <select name="packing_style" id="packing_style">
+                                <select name="item[packing_style]" id="packing_style">
                                     <option value="BARE">Bare</option>
                                     <option value="SKID">SKID</option>
                                     <option value="CASE">CASE</option>
-                                    <option value="CRATE">Audi</option>
+                                    <option value="CRATE">CRATE</option>
                                 </select>
                             </td>
-                            <td><input value="0" id="lenght" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
-                            <td><input value="0" id="height" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
-                            <td><input value="0" id="width" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
-                            <td><input value="0" id="weight" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" name="item[length]" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" name="item[heigth]" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" name="item[width]"  size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" name="item[weigth]" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
                             <td>
-                                <select name="cog_height_type" id="cog_type">
+                                <select name="item[cog_heigth_type]" id="cog_type">
                                     <option value="MANUAL">MANUAL</option>
                                     <option value="TBA">TBA</option>
                                     <option value="HALF HEIGHT">HALF HEIGHT</option>
                                 </select>
                             </td>
-                            <td><input value="0" id="cog_heigth" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;"/></td>
+                            <td><input value="0" name="item[cog_heigth]" size="1" style="border-bottom: 0px solid #00BCD4; margin-top: 0px;margin-bottom: 0px;/>"></td>
 
-                        
                         </tr>
                         
                     </table>
                     <input style="margin-left: 570px;" id="submit" type="Submit" name="Submit" value="Add item"  onclick="Purchase()" > 
+                    </form>
+                                  
                 </div>
             </div>  
 
@@ -90,22 +98,45 @@
                     <h3 style= "text-align: center;" >List item</h3>
                     <table style="width:120%; "  > 
                         <tr>
-                            <th colspan="6" >Container type</th> 
-                            <th>
-                               FR20
+                            <th colspan="8" >Container type</th> 
+                            <th colspan="4" >
+                                <p> <%= @session_container %> </p> 
                             </th>
                         </tr>
                         <tr>
+                            <th>STT</th>
                             <th>Packing style</th>
-                            <th>Lenght </th>
-                            <th>Height</th>
+                            <th>Length </th>
+                            <th>Heigth</th>
                             <th>Width</th>
-                            <th>Weight</th>
-                            <th>Cog Height type</th>
-                            <th>Cog Height</th>
+                            <th>Weigth</th>
+                            <th>Cog Heigth type</th>
+                            <th>Cog Heigth</th>
                         </tr>
+
+                        <% if @session_item != nil %>
+                            <% @session_item.each_with_index  do |item,index| %>
+                                <th><%= index+1 %></th> 
+                                <% item.each do |key,value| %>
+                                    <% if key == "cog_heigth" %>
+                                        <th><%= value %></th> 
+                                        <tr></tr>
+                                    <% else %>
+                                        <th><%= value %></th>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                            
+                        <% end %>
+
                     </table>
+                    <ul>
+                        <li><%= link_to "Submit" , deal_with_path() ,methob: :get %></li>
+                        <li><%= link_to "Container list" , list_container_index_path  %></li>
+                    </ul>
+                    
                 </div>
+                                
             </div>  
         </div>
 
@@ -154,6 +185,52 @@
         }
 
        
+    </script>
+
+    <script>
+      
+      $("#item").on("submit", function(e) {
+        if (!this.checkValidity()) return;
+
+        // prevent default event like submit, ...
+        e.preventDefault();
+
+        // get form input
+        input = $(this).serializeArray()
+
+        // add item to container
+        $("#list_item table tr:last").after(`
+          <tr>
+             <td>${input[0].value}</td>
+             <td>
+               ${input[1].value}
+             </td>
+             <td>
+               <button type="button" onclick="onDelete(this)">Delete</button>
+               <input type="hidden" value="${input[0].value}" name="${input[0].name}">
+               <input type="hidden" value="${input[1].value}" name="${input[1].name}">
+               <input type="hidden" value="${input[2].value}" name="${input[2].name}">
+               <input type="hidden" value="${input[3].value}" name="${input[3].name}">
+               <input type="hidden" value="${input[4].value}" name="${input[4].name}">
+               <input type="hidden" value="${input[5].value}" name="${input[5].name}">
+               <input type="hidden" value="${input[6].value}" name="${input[6].name}">
+               <input type="hidden" value="${input[7].value}" name="${input[7].name}">
+               <input type="hidden" value="${input[8].value}" name="${input[8].name}">
+             </td>
+          </tr>
+         `)
+
+        //reset form after submit
+        $(this).get(0).reset()
+      })
+
+      /*********
+      * Handle remove item from container
+      */
+      function onDelete(button) {
+        $(button).closest("tr").remove()
+      }
+
     </script>
     
 </body>

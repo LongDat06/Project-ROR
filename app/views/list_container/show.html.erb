@@ -35,15 +35,9 @@
     <div class="payment">
         <div class="row">
            <div class="col-1"> 
-                <div id="cart" >
-                    <table style="width:120%; "  > 
-                        <tr>
-                            <th colspan = "8">Container type</th> 
-                            <th> <%= @session_container %> </th>                            
-                        </tr>
-                        <tr>
-                            <th colspan = "9">Item</th> 
-                        </tr>
+                <h3>Item Container</h3>
+                <table>
+                    <thead>
                         <tr>
                             <th>STT</th>
                             <th>Packing style</th>
@@ -53,39 +47,26 @@
                             <th>Weight</th>
                             <th>Cog Height type</th>
                             <th>Cog Height</th>
-                            <th>Remarks</th>
                         </tr>
-                        
-                        
-                        <% if @session_item != nil %>
-                            <% @session_item.each_with_index  do |item,index| %>
-                                <th><%= index+1 %></th> 
-                                <% item.each do |key,value| %>
-                                    <% if key == "cog_heigth" %>
-                                        <th><%= value %></th> 
-                                        <th>
-                                            <% @Total_error.each_with_index do |error,index1|%> 
-                                                <%if index == index1 %>
-                                                    <% error.each do |a| %>
-                                                        <p style="text-align:left";> <%=- a %> </p>
-                                                    <% end %>
-                                                <%end%>
-                                            <% end %>
-                                        </th>
-                                        <tr></tr>
-                                    <% else %>
-                                        <th><%= value %></th>
-                                    <% end %>
-                                <% end %>
-                            <% end %>
-                        <% end %>
+                    </thead>
 
-                    </table>
-                </div>
-                    <ul>
-                        <li><a><%= link_to "Submit" ,list_container_index_path(id: @session_item),method: :post   %></th> </a>   </li>
-                        <li><a><%= link_to "Back" , root_path%> </a></a></li> 
-                    </ul>
+                    <tbody>
+                        <% @item.each_with_index do |item,index| %>
+                        <tr>
+                            <th><%= index+1 %></th>
+                            <td><%= item.packing_style %></td>
+                            <td><%= item.length %></td>
+                            <td><%= item.heigth %></td>
+                            <td><%= item.width %></td>
+                            <td><%= item.weigth %></td>
+                            <td><%= item.cog_heigth_type %></td>
+                            <td><%= item.cog_heigth %></td>
+                            
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                        <a><%= link_to "Back" , list_container_index_path%></a>
             </div>    
         </div>
     </div>     
@@ -125,15 +106,7 @@
     </div>
 
 
-    <script>
-        function Purchase(){
-            
-            alert("Thank you for purchasing!");
-
-        }
-
-       
-    </script>
+   
     
 </body>
 

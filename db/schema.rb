@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 2021_12_29_121957) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "container_id"
     t.string "packing_style"
-    t.float "lenght"
-    t.float "height"
+    t.float "length"
+    t.float "heigth"
     t.float "width"
-    t.float "weight"
-    t.string "cog_height_type"
-    t.float "cog_height"
+    t.float "weigth"
+    t.string "cog_heigth_type"
+    t.float "cog_heigth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
